@@ -1,23 +1,17 @@
-import React, { useState } from 'react';
-import { ArrowRight, MapPin, Clock } from 'lucide-react';
-import ContactModal from './ContactModal';
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
 
 interface HeroProps {
   darkMode: boolean;
   setActiveSection: (section: string) => void;
 }
 
-const Hero: React.FC<HeroProps> = ({ darkMode, setActiveSection }) => {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+const Hero: React.FC<HeroProps> = ({ setActiveSection }) => {
 
   const handleExploreShops = () => {
     setActiveSection('shops');
     const element = document.getElementById('shops');
     element?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handleContactUs = () => {
-    setIsContactModalOpen(true);
   };
 
   return (
@@ -47,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode, setActiveSection }) => {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <button
             onClick={handleExploreShops}
             className="group px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 bg-green-600 hover:bg-green-500 text-white shadow-lg hover:shadow-xl flex items-center space-x-2"
@@ -55,45 +49,12 @@ const Hero: React.FC<HeroProps> = ({ darkMode, setActiveSection }) => {
             <span>Explore Our Shops</span>
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
-          
-          <button
-            onClick={handleContactUs}
-            className="px-8 py-4 rounded-lg font-semibold transition-all duration-300 border-2 border-white text-white hover:bg-white hover:text-gray-900"
-          >
-            Contact Us
-          </button>
         </div>
 
-        {/* Quick Info Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-          <div className="p-4 rounded-lg transition-all duration-300 bg-green-600 hover:bg-green-500 shadow-lg hover:shadow-xl">
-            <div className="flex items-center space-x-3 text-white">
-              <MapPin size={20} className="text-white" />
-              <div className="text-left">
-                <p className="font-semibold">Location</p>
-                <p className="text-sm opacity-90">Jan Smuts Ave & Rothesay Ave, Craighall Park</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="p-4 rounded-lg transition-all duration-300 bg-green-600 hover:bg-green-500 shadow-lg hover:shadow-xl">
-            <div className="flex items-center space-x-3 text-white">
-              <Clock size={20} className="text-white" />
-              <div className="text-left">
-                <p className="font-semibold">Hours</p>
-                <p className="text-sm opacity-90">Mon-Fri 8am-9pm, Weekends 8am-10pm</p>
-              </div>
-            </div>
-          </div>
-        </div>
+  {/* Quick Info Cards removed as requested */}
       </div>
 
-      <ContactModal
-        isOpen={isContactModalOpen}
-        onClose={() => setIsContactModalOpen(false)}
-        darkMode={darkMode}
-        type="general"
-      />
+  {/* Contact modal removed as per request */}
     </section>
   );
 };
